@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bharatiyan Wellcare Systems</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0a0c;
+      --bg2:       #111115;
+      --bg3:       #16161b;
+      --border:    rgba(255,255,255,0.07);
+      --gold:      #c9a84c;
+      --gold-dim:  #a8883a;
+      --gold-glow: rgba(201,168,76,0.18);
+      --text:      #e8e4db;
+      --text-muted:#8a8580;
+      --white:     #ffffff;
+      --radius:    4px;
+      --section-pad: 100px 5vw;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 15px;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 5vw;
+      background: rgba(10,10,12,0.85);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .nav-logo .brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      line-height: 1.2;
+    }
+
+    .nav-logo .sub {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 130vh;
+      display: flex;
+      align-items: center;
+      padding: 160px 5vw 120px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background image placeholder */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      /* ↓ Replace this URL with your actual image */
+      background-image: url('https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=1800&auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center 30%;
+      background-repeat: no-repeat;
+      filter: brightness(0.22) saturate(0.6);
+    }
+
+    /* Dark gradient overlay for text legibility */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(10,10,12,0.92) 45%, rgba(10,10,12,0.3) 100%),
+        linear-gradient(to top, rgba(10,10,12,0.7) 0%, transparent 50%);
+    }
+
+    /* Subtle gold atmosphere over image */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        radial-gradient(ellipse 55% 55% at 70% 45%, rgba(201,168,76,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 40% at 8% 85%, rgba(201,168,76,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Diagonal decorative line */
+    .hero::after {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: 0; right: 18%;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+      opacity: 0.15;
+    }
+
+    .hero-inner {
+      max-width: 720px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 600;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 48px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 40px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.35s;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      z-index: -1;
+    }
+
+    .btn-primary:hover { color: var(--bg); }
+    .btn-primary:hover::before { transform: scaleX(1); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 5vw;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .hero-scroll::before {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: var(--section-pad); }
+
+    .section-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 20px;
+    }
+
+    .about-left p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      max-width: 500px;
+    }
+
+    .about-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pillar {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pillar:first-child { border-top: 1px solid var(--border); }
+
+    .pillar-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--gold);
+      opacity: 0.5;
+      min-width: 36px;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .pillar-text strong {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .pillar-text span {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Founders */
+    .founders {
+      padding: 80px 5vw;
+      background: var(--bg3);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .founders-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .founder-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .founder-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .founder-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-3px); }
+    .founder-card:hover::before { opacity: 1; }
+
+    .founder-rank {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .founder-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .founder-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── SERVICES ── */
+    .services { background: var(--bg); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 52px;
+    }
+
+    .service-card {
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    /* Background image layer */
+    .service-card-img {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.28) saturate(0.5);
+      transition: transform 0.7s cubic-bezier(0.4,0,0.2,1), filter 0.5s ease;
+      z-index: 0;
+    }
+
+    .service-card:hover .service-card-img {
+      transform: scale(1.05);
+      filter: brightness(0.38) saturate(0.65);
+    }
+
+    /* Dark gradient so text is always readable */
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,12,0.97) 0%, rgba(10,10,12,0.55) 55%, rgba(10,10,12,0.15) 100%);
+      z-index: 1;
+      transition: background 0.4s ease;
+    }
+
+    .service-card:hover::before {
+      background: linear-gradient(to top, rgba(10,10,12,0.95) 0%, rgba(10,10,12,0.5) 50%, rgba(10,10,12,0.1) 100%);
+    }
+
+    /* Gold underline sweep */
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+      z-index: 3;
+    }
+
+    .service-card:hover::after { transform: scaleX(1); }
+
+    /* Content sits above all layers */
+    .service-card-content {
+      position: relative;
+      z-index: 2;
+      padding: 40px 36px;
+    }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(201,168,76,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--gold);
+      font-size: 1.1rem;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .service-card:hover .service-icon {
+      border-color: var(--gold);
+      background: var(--gold-glow);
+    }
+
+    .service-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .service-desc {
+      font-size: 0.83rem;
+      color: rgba(232,228,219,0.75);
+      line-height: 1.75;
+      max-width: 340px;
+    }
+
+    .service-desc strong {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* ── BRANDS ── */
+    .brands {
+      padding: 60px 5vw;
+      background: var(--bg3);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .brands-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .brands-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 16px;
+      justify-content: center;
+      list-style: none;
+    }
+
+    .brand-pill {
+      padding: 8px 22px;
+      border: 1px solid var(--border);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    .brand-pill:hover {
+      border-color: rgba(201,168,76,0.4);
+      color: var(--gold);
+    }
+
+    .service-num {
+      position: absolute;
+      top: 28px;
+      right: 32px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: rgba(201,168,76,0.18);
+      line-height: 1;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* ── CONTACT (no form) ── */
+    .contact {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-solo {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-solo .section-label { justify-content: center; }
+    .contact-solo .section-label::after { display: none; }
+    .contact-solo .gold-divider { margin: 20px auto 36px; }
+
+    .contact-intro {
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 52px;
+      font-size: 0.95rem;
+      line-height: 1.85;
+    }
+
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .ccard {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 32px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      text-decoration: none;
+      text-align: left;
+      transition: border-color 0.3s, transform 0.3s, background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ccard::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .ccard:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); background: var(--bg2); }
+    .ccard:hover::after { transform: scaleX(1); }
+
+    .ccard-icon {
+      width: 42px; height: 42px;
+      border: 1px solid rgba(201,168,76,0.25);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      flex-shrink: 0;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .ccard:hover .ccard-icon { background: var(--gold-glow); border-color: var(--gold); }
+
+    .ccard-text { display: flex; flex-direction: column; gap: 4px; }
+
+    .ccard-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .ccard-value {
+      font-size: 0.82rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg3);
+      padding: 18px 0;
+      white-space: nowrap;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      gap: 0;
+      animation: marqueeScroll 28s linear infinite;
+    }
+
+    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0 36px;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .marquee-item::after {
+      content: '✦';
+      color: var(--gold);
+      font-size: 0.5rem;
+      opacity: 0.6;
+    }
+
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 900px) {
+      .contact-cards { grid-template-columns: 1fr; }
+    }
+
+    @media (min-width: 560px) and (max-width: 900px) {
+      .contact-cards { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--bg3);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 52px 5vw;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background-color: var(--border);
+    }
+
+    .stat {
+      background: var(--bg3);
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 48px 5vw;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── DIVIDER ── */
+    .gold-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 20px 0 36px;
+      opacity: 0.6;
+    }
+
+    /* ── HAMBURGER (mobile) ── */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--text-muted);
+      transition: background 0.3s;
+    }
+
+    /* ── MEDIA QUERIES ── */
+    @media (max-width: 900px) {
+      .about-grid,
+      .founders-grid,
+      .services-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+
+      .services-grid { gap: 2px; }
+
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+    }
+
+    @media (max-width: 560px) {
+      :root { --section-pad: 72px 6vw; }
+      .stats-bar { grid-template-columns: 1fr 1fr; padding: 32px 4vw; }
+      .stat { padding: 20px 16px; }
+      .stat-number { font-size: 2.2rem; }
+      .service-card { padding: 36px 28px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      background: var(--bg);
+      padding: var(--section-pad);
+      border-top: 1px solid var(--border);
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .testimonials-header .section-label {
+      justify-content: center;
+    }
+
+    .testimonials-header .section-label::after { display: none; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .tcard {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 36px 30px 30px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .tcard:hover {
+      border-color: rgba(201,168,76,0.25);
+      transform: translateY(-4px);
+    }
+
+    .tcard-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      line-height: 0.6;
+      color: var(--gold);
+      opacity: 0.35;
+      position: absolute;
+      top: 22px;
+      left: 26px;
+      pointer-events: none;
+    }
+
+    .tcard-stars {
+      display: flex;
+      gap: 4px;
+      margin-top: 8px;
+    }
+
+    .tcard-stars span {
+      color: var(--gold);
+      font-size: 0.75rem;
+    }
+
+    .tcard-text {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.8;
+      font-style: italic;
+      flex: 1;
+      padding-top: 10px;
+    }
+
+    .tcard-author {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .tcard-name {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    .tcard-role {
+      font-size: 0.72rem;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 900px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (min-width: 560px) and (max-width: 900px) {
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Elements start hidden/offset */
+    [data-reveal] {
+      opacity: 0;
+      transition-property: opacity, transform, filter;
+      transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+      transition-duration: 0.85s;
+      will-change: opacity, transform;
+    }
+
+    [data-reveal="fade-up"]    { transform: translateY(36px); }
+    [data-reveal="fade-left"]  { transform: translateX(-40px); }
+    [data-reveal="fade-right"] { transform: translateX(40px); }
+    [data-reveal="fade-scale"] { transform: scale(0.94); filter: blur(2px); }
+    [data-reveal="fade-in"]    { transform: none; }
+
+    /* Stagger delays via data-delay attribute */
+    [data-delay="1"] { transition-delay: 0.1s; }
+    [data-delay="2"] { transition-delay: 0.2s; }
+    [data-delay="3"] { transition-delay: 0.3s; }
+    [data-delay="4"] { transition-delay: 0.4s; }
+    [data-delay="5"] { transition-delay: 0.5s; }
+    [data-delay="6"] { transition-delay: 0.6s; }
+
+    /* Revealed state — JS adds this class */
+    [data-reveal].is-visible {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+
+    /* Hero content animates on load (CSS keyframes, no JS needed) */
+    .hero-eyebrow {
+      animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.2s both;
+    }
+    .hero h1 {
+      animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.38s both;
+    }
+    .hero-tagline {
+      animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.54s both;
+    }
+    .hero .btn-primary {
+      animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.68s both;
+    }
+    .hero-scroll {
+      animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.85s both;
+    }
+
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Nav fade-in on load */
+    nav {
+      animation: navSlide 0.7s cubic-bezier(0.22,1,0.36,1) 0.05s both;
+    }
+
+    @keyframes navSlide {
+      from { opacity: 0; transform: translateY(-100%); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Stat counter roll-up effect */
+    .stat { overflow: hidden; }
+    .stat[data-reveal].is-visible .stat-number {
+      animation: countUp 0.6s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Gold line wipe animation on section-label */
+    .section-label::after {
+      transform-origin: left;
+      transition: transform 0.6s cubic-bezier(0.22,1,0.36,1) 0.4s,
+                  opacity 0.6s ease 0.4s;
+    }
+
+    [data-reveal]:not(.is-visible) .section-label::after,
+    .section-label:not(.label-visible)::after {
+      transform: scaleX(0);
+      opacity: 0;
+    }
+
+    [data-reveal].is-visible .section-label::after,
+    .section-label.label-visible::after {
+      transform: scaleX(1);
+      opacity: 0.5;
+    }
+
+    /* Gold divider wipe */
+    .gold-divider {
+      transform-origin: left;
+      transition: transform 0.7s cubic-bezier(0.22,1,0.36,1) 0.5s,
+                  opacity 0.7s ease 0.5s;
+    }
+
+    [data-reveal]:not(.is-visible) .gold-divider {
+      transform: scaleX(0);
+      opacity: 0;
+    }
+
+    [data-reveal].is-visible .gold-divider {
+      transform: scaleX(1);
+      opacity: 0.6;
+    }
+
+    /* Pillar line reveal */
+    .pillar {
+      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .pillar-wrap:not(.is-visible) .pillar {
+      opacity: 0;
+      transform: translateX(24px);
+    }
+
+    .pillar-wrap.is-visible .pillar:nth-child(1) { transition-delay: 0.1s; }
+    .pillar-wrap.is-visible .pillar:nth-child(2) { transition-delay: 0.22s; }
+    .pillar-wrap.is-visible .pillar:nth-child(3) { transition-delay: 0.34s; }
+    .pillar-wrap.is-visible .pillar:nth-child(4) { transition-delay: 0.46s; }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-logo">
+      <span class="brand">Bharatiyan Wellcare</span>
+      <span class="sub">Systems Pvt. Ltd.</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Bharatiyan Wellcare Systems</div>
+      <h1>Building Trust.<br /><em>Delivering</em><br />Excellence.</h1>
+      <p class="hero-tagline">
+        Your trusted partner for respiratory care and medical equipment — supplying, renting, and servicing CPAP, BPAP, Oxygen Concentrators, and surgical devices in Bengaluru.
+      </p>
+      <a href="#contact" class="btn-primary">Enquire Now</a>
+    </div>
+    <div class="hero-scroll">Scroll to explore</div>
+  </section>
+
+  <!-- ── STATS BAR ── -->
+  <div class="stats-bar">
+    <div class="stat" data-reveal="fade-up" data-delay="1">
+      <span class="stat-number">6+</span>
+      <span class="stat-label">Product Categories</span>
+    </div>
+    <div class="stat" data-reveal="fade-up" data-delay="2">
+      <span class="stat-number">10+</span>
+      <span class="stat-label">Trusted Brands</span>
+    </div>
+    <div class="stat" data-reveal="fade-up" data-delay="3">
+      <span class="stat-number">Sale &amp; Rent</span>
+      <span class="stat-label">Flexible Options</span>
+    </div>
+    <div class="stat" data-reveal="fade-up" data-delay="4">
+      <span class="stat-number">Bengaluru</span>
+      <span class="stat-label">Based In</span>
+    </div>
+  </div>
+
+  <!-- ── ABOUT ── -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-left" data-reveal="fade-right">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">Forged in Service.<br />Built for Care.</h2>
+        <div class="gold-divider"></div>
+        <p>Bharatiyan Wellcare Systems is a veteran-owned medical equipment enterprise dedicated to improving patient outcomes through reliable respiratory care devices, surgical equipment, and accessories — delivered with the discipline and integrity of India's armed forces.</p>
+        <p>Founded by two distinguished veterans, we supply, service, and rent industry-leading brands including Resmed, Philips, BMC, Oxymed, Longfian, Drive, Inogen, and more — serving patients and healthcare providers across Bengaluru with the best in class.</p>
+      </div>
+      <div class="about-pillars pillar-wrap" data-reveal="fade-left">
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <div class="pillar-text">
+            <strong>Patient-First Approach</strong>
+            <span>Every product and recommendation is centred on improving patient comfort, safety, and clinical outcomes.</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <div class="pillar-text">
+            <strong>Certified Brands Only</strong>
+            <span>We deal exclusively in globally recognised, clinically validated brands — no compromises on quality or compliance.</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <div class="pillar-text">
+            <strong>Rental Flexibility</strong>
+            <span>Affordable rental programmes for CPAP, BPAP, and Oxygen Concentrators — making care accessible to all.</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">04</div>
+          <div class="pillar-text">
+            <strong>After-Sales Support</strong>
+            <span>Dedicated service and maintenance for all equipment, backed by expert guidance from our veteran founders.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOUNDERS ── -->
+  <section class="founders">
+    <div data-reveal="fade-up"><div class="section-label">Leadership</div>
+    <h2 class="section-title">Our Founders</h2></div>
+    <div class="founders-grid">
+      <div class="founder-card" data-reveal="fade-up" data-delay="1">
+        <div class="founder-rank">Captain (Retd.) · Indian Army</div>
+        <div class="founder-name">Ramesha DK</div>
+        <p class="founder-desc">
+          A decorated officer with extensive operational and administrative command experience, Capt. Ramesha DK co-founded Bharatiyan Wellcare Systems to bring the same precision and accountability from military service to the medical equipment sector — ensuring every patient gets dependable, quality care solutions.
+        </p>
+      </div>
+      <div class="founder-card" data-reveal="fade-up" data-delay="2">
+        <div class="founder-name">RS Latwal</div>
+        <p class="founder-desc">
+          Sub Maj. RS Latwal's distinguished service career in operations and logistics underpins the company's supply chain and service reliability — ensuring that every device, from Oxygen Concentrators to Surgical Equipment, reaches patients and providers across Bengaluru with care and speed.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ── -->
+  <section class="services" id="services">
+    <div data-reveal="fade-up"><div class="section-label">What We Offer</div>
+    <h2 class="section-title">Our Services</h2></div>
+    <div class="services-grid">
+
+      <div class="service-card" data-reveal="fade-scale" data-delay="1">
+        <div class="service-card-img" style="background-image: url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&auto=format&fit=crop&q=80');"></div>
+        <div class="service-card-content">
+          <div class="service-num">01</div>
+          <div class="service-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div class="service-title">CPAP &amp; BPAP Devices</div>
+          <p class="service-desc">Top-of-the-line continuous and bi-level positive airway pressure devices for sleep apnea and respiratory therapy. Brands: <strong>Resmed, Philips, BMC, Oxymed, Longfian.</strong></p>
+        </div>
+      </div>
+
+      <div class="service-card" data-reveal="fade-scale" data-delay="2">
+        <div class="service-card-img" style="background-image: url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&auto=format&fit=crop&q=80');"></div>
+        <div class="service-card-content">
+          <div class="service-num">02</div>
+          <div class="service-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="10"/><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <div class="service-title">Oxygen Concentrators</div>
+          <p class="service-desc">Stationary 5L &amp; 10L concentrators for home and clinical use, plus portable battery-backed models for on-the-go patients. Brands: <strong>Drive, Oxyflow, Oxymed, Longfian, Homemedex, Philips, Inogen Rove 6, iGo2.</strong></p>
+        </div>
+      </div>
+
+      <div class="service-card" data-reveal="fade-scale" data-delay="3">
+        <div class="service-card-img" style="background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80');"></div>
+        <div class="service-card-content">
+          <div class="service-num">03</div>
+          <div class="service-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          </div>
+          <div class="service-title">Rental Services</div>
+          <p class="service-desc">Flexible short-term and long-term rental programmes for CPAP, BPAP, and Oxygen Concentrators — making critical respiratory care accessible and affordable without large upfront investment.</p>
+        </div>
+      </div>
+
+      <div class="service-card" data-reveal="fade-scale" data-delay="4">
+        <div class="service-card-img" style="background-image: url('https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=800&auto=format&fit=crop&q=80');"></div>
+        <div class="service-card-content">
+          <div class="service-num">04</div>
+          <div class="service-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
+          </div>
+          <div class="service-title">Surgical Equipment &amp; Accessories</div>
+          <p class="service-desc">A comprehensive range of basic and advanced surgical equipment alongside essential accessories — <strong>Filters, Cannula, Humidifier Bottles</strong> — ensuring complete respiratory care support for patients and clinicians.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── BRANDS ── -->
+  <div class="brands">
+    <p class="brands-label" data-reveal="fade-up">Brands We Carry</p>
+    <ul class="brands-list">
+      <li class="brand-pill" data-reveal="fade-up" data-delay="1">Resmed</li>
+      <li class="brand-pill" data-reveal="fade-up" data-delay="1">Philips</li>
+      <li class="brand-pill" data-reveal="fade-up" data-delay="2">BMC</li>
+      <li class="brand-pill" data-reveal="fade-up" data-delay="2">Oxymed</li>
+      <li class="brand-pill" data-reveal="fade-up" data-delay="3">Longfian</li>
+      <li class="brand-pill" data-reveal="fade-up" data-delay="3">Drive</li>
+      <li class="brand-pill" data-reveal="fade-up" data-delay="4">Oxyflow</li>
+      <li class="brand-pill" data-reveal="fade-up" data-delay="4">Homemedex</li>
+      <li class="brand-pill" data-reveal="fade-up" data-delay="5">Inogen Rove 6</li>
+      <li class="brand-pill" data-reveal="fade-up" data-delay="5">iGo2</li>
+    </ul>
+  </div>
+
+  <!-- ── TESTIMONIALS ── -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-header" data-reveal="fade-up">
+      <div class="section-label">What Patients Say</div>
+      <h2 class="section-title">Trusted by Families<br />Across Bengaluru</h2>
+    </div>
+    <div class="testimonials-grid">
+
+      <div class="tcard" data-reveal="fade-up" data-delay="1">
+        <div class="tcard-quote">"</div>
+        <div class="tcard-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <p class="tcard-text">Got a CPAP machine on rent for my father after his sleep study. The team was incredibly patient in explaining the settings and brands available. Resmed unit worked perfectly from day one.</p>
+        <div class="tcard-author">
+          <span class="tcard-name">Suresh K.</span>
+          <span class="tcard-role">Patient's Family · Indiranagar, Bengaluru</span>
+        </div>
+      </div>
+
+      <div class="tcard" data-reveal="fade-up" data-delay="2">
+        <div class="tcard-quote">"</div>
+        <div class="tcard-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <p class="tcard-text">We needed a 10L Oxygen Concentrator urgently for home use. Bharatiyan Wellcare arranged delivery the very same day. Reliable, prompt, and genuinely caring — rare to find such service.</p>
+        <div class="tcard-author">
+          <span class="tcard-name">Anitha R.</span>
+          <span class="tcard-role">Caregiver · Jayanagar, Bengaluru</span>
+        </div>
+      </div>
+
+      <div class="tcard" data-reveal="fade-up" data-delay="3">
+        <div class="tcard-quote">"</div>
+        <div class="tcard-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <p class="tcard-text">As a retired serviceman myself, I truly appreciate the discipline and honesty these founders bring. Bought a Philips BPAP and received thorough after-sales support. Highly recommended.</p>
+        <div class="tcard-author">
+          <span class="tcard-name">Col. (Retd.) Manjunath S.</span>
+          <span class="tcard-role">Patient · Sadashivanagar, Bengaluru</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── MARQUEE ── -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item">CPAP &amp; BPAP</span>
+      <span class="marquee-item">Oxygen Concentrators</span>
+      <span class="marquee-item">Rental Services</span>
+      <span class="marquee-item">Surgical Equipment</span>
+      <span class="marquee-item">Resmed</span>
+      <span class="marquee-item">Philips</span>
+      <span class="marquee-item">Oxymed</span>
+      <span class="marquee-item">Longfian</span>
+      <span class="marquee-item">Inogen</span>
+      <span class="marquee-item">Bengaluru</span>
+      <span class="marquee-item">CPAP &amp; BPAP</span>
+      <span class="marquee-item">Oxygen Concentrators</span>
+      <span class="marquee-item">Rental Services</span>
+      <span class="marquee-item">Surgical Equipment</span>
+      <span class="marquee-item">Resmed</span>
+      <span class="marquee-item">Philips</span>
+      <span class="marquee-item">Oxymed</span>
+      <span class="marquee-item">Longfian</span>
+      <span class="marquee-item">Inogen</span>
+      <span class="marquee-item">Bengaluru</span>
+    </div>
+  </div>
+
+  <!-- ── CONTACT ── -->
+  <section class="contact" id="contact">
+    <div class="contact-solo" data-reveal="fade-up">
+      <div class="section-label">Reach Us</div>
+      <h2 class="section-title">Get in Touch</h2>
+      <div class="gold-divider"></div>
+      <p class="contact-intro">Looking for a specific device, need a rental quote, or want guidance on the right respiratory solution? Call or write to us — we're ready to help patients, caregivers, and healthcare providers across Bengaluru.</p>
+      <div class="contact-cards">
+        <a href="tel:+919999866199" class="ccard">
+          <div class="ccard-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+          </div>
+          <div class="ccard-text">
+            <span class="ccard-label">Call Us</span>
+            <span class="ccard-value">+91 99998 66199</span>
+            <span class="ccard-value">+91 89712 07072</span>
+          </div>
+        </a>
+        <a href="mailto:bharatiyanwellcaresystems@gmail.com" class="ccard">
+          <div class="ccard-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="ccard-text">
+            <span class="ccard-label">Email Us</span>
+            <span class="ccard-value">bharatiyanwellcaresystems</span>
+            <span class="ccard-value">@gmail.com</span>
+          </div>
+        </a>
+        <a href="https://maps.google.com/?q=73+Shree+Complex+St+Johns+Road+Shivaji+Nagar+Bengaluru" target="_blank" class="ccard">
+          <div class="ccard-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="ccard-text">
+            <span class="ccard-label">Visit Us</span>
+            <span class="ccard-value">73 Shree Complex</span>
+            <span class="ccard-value">St John's Rd, Shivaji Nagar, Bengaluru</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer data-reveal="fade-up">
+    <div class="footer-brand">Bharatiyan Wellcare Systems</div>
+    <ul class="footer-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 Bharatiyan Wellcare Systems Pvt. Ltd. All rights reserved.</span>
+  </footer>
+
+  <!-- ── SCROLL REVEAL JS ── -->
+  <script>
+    // Fallback — reveal everything immediately if IntersectionObserver not supported
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-visible'));
+    } else {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+      document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+    }
+
+    // Safety net — after 1.5s, force-reveal anything still hidden
+    setTimeout(() => {
+      document.querySelectorAll('[data-reveal]:not(.is-visible)').forEach(el => {
+        el.classList.add('is-visible');
+      });
+    }, 1500);
+
+    // Smooth scroll for nav anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Nav border gold tint on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.borderBottomColor = window.scrollY > 60
+        ? 'rgba(201,168,76,0.15)'
+        : 'rgba(255,255,255,0.07)';
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
